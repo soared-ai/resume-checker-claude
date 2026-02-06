@@ -1,6 +1,9 @@
 # Spec documents (confidential)
 soared_cowork_plugin_spec.docx.md
 
+# Local Claude settings
+.claude/
+
 # OS files
 .DS_Store
 Thumbs.db
