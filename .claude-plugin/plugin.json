@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "description": "AI-powered resume scoring and feedback. Scores resumes 0-100 with actionable fixes.",
   "author": {
-    "name": "Soared"
-  }
+    "name": "Soared",
+    "url": "https://soared.ai"
+  },
+  "homepage": "https://github.com/soared-ai/resume-checker-claude",
+  "skills": [
+    "skills/resume-scoring"
+  ],
+  "commands": [
+    "commands/resume-score.md",
+    "commands/resume-tips.md"
+  ]
 }
