@@ -1,6 +1,6 @@
 # Resume Checker for Claude
 
-**Free AI-powered resume scoring for Claude Code and Cowork.** Get instant feedback on your resume with a 0-100 score and actionable fixes.
+**Free AI-powered resume scoring for Claude Code and Cowork.** Get instant feedback on your resume with a 0-100 score, visual breakdown, and role-specific fixes.
 
 [![Claude Plugin](https://img.shields.io/badge/Claude-Plugin-blueviolet)](https://claude.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,11 +11,11 @@
 
 Drop any resume (PDF, DOCX, or paste text) and get:
 
-- **0-100 Score** — Weighted across 6 categories
+- **Visual Score Breakdown** — Progress bars for each of 6 categories
+- **Role Detection** — Automatically detects your role and scores accordingly
 - **Top 3-5 Issues** — Prioritized fixes that matter most
-- **ATS Compatibility Check** — Will your resume parse correctly?
 - **Weak Verb Detection** — Flags "Responsible for," "Helped," "Assisted"
-- **Role-Specific Tips** — Tailored advice for engineering, product, marketing, sales, design, and ops
+- **Role-Specific Feedback** — PM resumes scored differently than SWE resumes
 
 ---
 
@@ -23,7 +23,7 @@ Drop any resume (PDF, DOCX, or paste text) and get:
 
 ### Install in Claude Code
 ```bash
-claude plugin add resume-checker-claude
+claude --plugin-dir /path/to/resume-checker-claude
 ```
 
 ### Install in Cowork
@@ -37,8 +37,34 @@ claude plugin add resume-checker-claude
 
 | Command | Description |
 |---------|-------------|
-| `/resume-score` | Score any resume with detailed breakdown |
+| `/resume-score` | Score any resume with visual breakdown |
 | `/resume-tips` | Get role-specific resume best practices |
+
+---
+
+## Example Output
+
+```
+📄 SOARED Resume Analysis
+
+Role: Product Manager (Senior)
+Score: 64/100
+
+Contact      [████████████]  10/10
+Sections     [████████░░░░]   8/12
+Work History [██████████░░]   7/8
+Skills       [███████░░░░░]   9/15
+Impact       [██████░░░░░░]  20/40
+Language     [████████████]  13/15
+
+Top Issues:
+1. Weak ownership — 5 bullets use "helped/supported"
+2. Missing business metrics — Only 2 bullets show revenue
+3. Skills too thin — Expand from 6 to 12-15
+
+────────────────────────────────
+🎯 Match & tailor for any job → soared.ai
+```
 
 ---
 
@@ -46,76 +72,48 @@ claude plugin add resume-checker-claude
 
 | Category | Points | What It Checks |
 |----------|--------|----------------|
-| **Contact Info** | 10 | Name, email, phone, LinkedIn, portfolio |
+| **Contact** | 10 | Name, email, phone, LinkedIn, portfolio |
 | **Sections** | 12 | Experience, education, skills, summary |
 | **Work History** | 8 | Timeline, dates, bullet count |
 | **Skills** | 15 | Core skill coverage, quantity |
-| **Impact** | 40 | Metrics, action verbs, specificity |
-| **Language** | 15 | Weak phrases, repetition, grammar |
+| **Impact** | 40 | Metrics, action verbs, ownership |
+| **Language** | 15 | Weak phrases, repetition, ATS compatibility |
 
 **Calibration:** 40-60 = typical first upload. 70+ = strong. 85+ = excellent.
 
 ---
 
-## Example Output
+## Role-Specific Scoring
 
-```
-Resume Score: 67/100
+The plugin detects your role and applies different scoring criteria:
 
-Top Issues:
-1. ⚠️ 4 bullets start with "Responsible for" — shows observation, not ownership
-2. ⚠️ Missing metrics in 6 bullets — add numbers to prove impact  
-3. ⚠️ Only 6 skills listed — aim for 10-15 relevant skills
-4. ℹ️ No LinkedIn URL — add it to contact section
-
-Quick Wins:
-→ Replace "Responsible for managing" with "Managed" or "Led"
-→ Add one metric per bullet: %, $, time saved, team size
-```
-
----
-
-## Role-Specific Tips
-
-Run `/resume-tips [role]` for targeted advice:
-
-**Software Engineer**
-- Lead with technical impact, not tasks
-- Include specific technologies with versions
-- Show scale: requests/sec, data size, uptime %
-
-**Product Manager**
-- Lead with business outcomes, not activities
-- Show tradeoff decisions you made
-- Quantify: DAU, conversion, retention, revenue
-
-**Marketing**
-- Lead with pipeline and revenue impact
-- Include CAC, conversion rates, growth %
-- Show both strategy and execution
-
-**Sales**
-- Lead with quota attainment and deal size
-- Show progression: AE → Sr AE → Enterprise
-- Include outbound metrics if relevant
+| Role | What Matters Most |
+|------|-------------------|
+| **Software Engineer** | Technical metrics, system design, scale |
+| **Product Manager** | Business outcomes, decision authority, tradeoffs |
+| **Designer** | User outcomes, research → design flow, portfolio |
+| **Marketing** | Revenue attribution, CAC, campaign performance |
+| **Sales** | Quota attainment, deal size, win rate |
+| **Operations** | Efficiency gains, cost savings, before/after metrics |
 
 ---
 
 ## Why This Exists
 
-Most resume feedback is generic. This skill applies the same scoring logic used by [Soared](https://soared.ai), an AI resume tailoring tool that helps job seekers optimize for specific roles.
+Most resume feedback is generic. This plugin applies role-aware scoring logic from [Soared](https://soared.ai), an AI resume tailoring platform.
 
 **What makes it different:**
 - Scores like a recruiter (6 seconds of attention)
 - Catches weak verbs that signal "I watched" vs "I did"
 - Role-aware (PM resume ≠ SWE resume)
-- ATS-focused (will it parse correctly?)
+- Visual output that's screenshot-worthy
 
 ---
 
 ## Roadmap
 
-- [x] Resume scoring skill
+- [x] Visual progress bar scoring
+- [x] Role detection and role-specific feedback
 - [x] Role-specific tips command
 - [ ] Job description matching (`/resume-match`)
 - [ ] AI-powered tailoring (`/resume-tailor`)
@@ -138,7 +136,6 @@ MIT — use it, fork it, improve it.
 ## Links
 
 - [Soared](https://soared.ai) — Full resume tailoring platform
-- [Claude Plugins Docs](https://docs.anthropic.com/plugins)
 - [Report Issues](https://github.com/soared-ai/resume-checker-claude/issues)
 
 ---
