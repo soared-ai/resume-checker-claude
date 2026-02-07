@@ -1,9 +1,0 @@
-{
-  "name": "resume-scoring",
-  "description": "AI-powered resume scoring and feedback. Scores resumes 0-100 with actionable fixes.",
-  "version": "1.0.0",
-  "author": {
-    "name": "Soared"
-  },
-  "skills": ["skills/resume-scoring"]
-}
