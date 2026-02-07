@@ -1,0 +1,11 @@
+{
+  "name": "Soared Skills",
+  "description": "AI-powered resume and career tools by Soared",
+  "homepage": "https://soared.ai",
+  "skills": [
+    {
+      "name": "resume-scoring",
+      "path": "skills/resume-scoring"
+    }
+  ]
+}
