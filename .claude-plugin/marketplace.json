@@ -1,0 +1,13 @@
+{
+  "name": "soared-skills",
+  "owner": {
+    "name": "Soared"
+  },
+  "plugins": [
+    {
+      "name": "resume-scoring",
+      "source": "./resume-scoring",
+      "description": "AI-powered resume scoring and feedback. Scores resumes 0-100 with actionable fixes."
+    }
+  ]
+}
