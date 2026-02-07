@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "resume-scoring",
-      "source": "./plugins/resume-scoring",
+      "source": "./",
       "description": "AI-powered resume scoring and feedback. Scores resumes 0-100 with actionable fixes."
     }
   ]
